@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+  {% block content %}
+    {% if object.bookimage_set.count > 0 %}
+      <div>
+        {% for book in object.bookimage_set.all %}
+          <img class="img-responsive" src="{{ book.image.url }}">
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <h1>{{object.title}}</h1>
+    <p>Author: {{object.author}}</p>
+
+    {% if object.bookgenre_set.count > 0 %}
+      <div>
+        {% for book in object.bookgenre_set.all %}
+          <p>Genre: {{ book.genre }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <p>Page Count: {{object.page_count}}</p>
+    <p>Publish Date: {{object.publish_date}}</p>
+    <p>ISBN Number: {{object.ISBN_number}}</p>
+  {% endblock content %}

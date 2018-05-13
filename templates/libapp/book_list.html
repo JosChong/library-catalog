@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+  {% block content %}
+      {% for object in object_list %}
+        {% if object.bookimage_set.count > 0 %}
+          <div>
+            {% for book in object.bookimage_set.all %}
+              <img class="img-responsive" src="{{ book.image.url }}">
+            {% endfor %}
+          </div>
+        {% endif %}
+        <p><a href="{{object.get_url}}">{{object.title}}</a></p>
+        <hr>
+      {% endfor %}
+  {% endblock content %}
